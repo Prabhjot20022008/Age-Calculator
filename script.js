@@ -13,11 +13,17 @@ const getAge = () =>{
         let currDate = new Date();
         let birthdate = new Date(birthdateVal);
         let month = currDate.getMonth() - birthdate.getMonth();
+        let date = currDate.getDate() - birthdate.getDate();
         if(age>=1){
             output.innerText = `${age} ${age > 1 ? "Years" : "Year"}`;
         }
         else if(age>=0 && age<1){
+            if(month<1){
+                output.innerText = `${date} ${date > 1 ? "Days" : "Day"}`;
+            }
+            else{
             output.innerText = `${month} ${month > 1 ? "Months" : "Month"}`;
+            }
         }
         else{
             output.innerText = `${age}`;

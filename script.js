@@ -4,16 +4,25 @@ let output = document.querySelector("#output");
 
 const getAge = () =>{
     let birthdateVal = birthdateInput.value;
+    let age = calculateAge(birthdateVal);
+    let currDate = new Date();
+    let birthdate = new Date(birthdateVal);
+    let month = currDate.getMonth() - birthdate.getMonth();
+    let date = currDate.getDate() - birthdate.getDate();
+
     if(birthdateVal === ""){
         alert("Enter a valid Date of Birth");
         output.innerText = `-- Years`;
     }
+    else if(age<0){
+        output.innerText = `not defined`;
+    }
     else{
-        let age = calculateAge(birthdateVal);
-        let currDate = new Date();
-        let birthdate = new Date(birthdateVal);
-        let month = currDate.getMonth() - birthdate.getMonth();
-        let date = currDate.getDate() - birthdate.getDate();
+        // let age = calculateAge(birthdateVal);
+        // let currDate = new Date();
+        // let birthdate = new Date(birthdateVal);
+        // let month = currDate.getMonth() - birthdate.getMonth();
+        // let date = currDate.getDate() - birthdate.getDate();
         if(age>=1){
             output.innerText = `${age} ${age > 1 ? "Years" : "Year"}`;
         }
@@ -21,7 +30,7 @@ const getAge = () =>{
             if(month<1){
                 output.innerText = `${date} ${date > 1 ? "Days" : "Day"}`;
             }
-            else{
+            else if(month>=1){
             output.innerText = `${month} ${month > 1 ? "Months" : "Month"}`;
             }
         }
